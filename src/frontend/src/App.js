@@ -1,20 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Recipes from './components/Recipes';
-import Ingredients from './components/Ingredients';
+import HomePage from './pages/HomePage';
+import RecipesPage from './pages/RecipesPage';
+import RecipeDetailsPage from './pages/RecipeDetailsPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 
-const App = () => {
+function App() {
     return (
         <Router>
             <Navbar />
             <Routes>
-                <Route path="/" element={<h1>Welcome to Cooking Recipes Database</h1>} />
-                <Route path="/recipes" element={<Recipes />} />
-                <Route path="/ingredients" element={<Ingredients />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/recipes" element={<RecipesPage />} />
+                <Route path="/recipes/:id" element={<RecipeDetailsPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
             </Routes>
         </Router>
     );
-};
+}
 
 export default App;
