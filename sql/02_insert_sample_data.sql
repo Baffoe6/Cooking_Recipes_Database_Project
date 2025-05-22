@@ -1,10 +1,10 @@
 USE cooking_recipes_db;
 
 -- Insert Sample Users
-INSERT INTO users (username, email, password_hash) VALUES
-('john_doe', 'john@example.com', 'hashed_password_1'),
-('jane_smith', 'jane@example.com', 'hashed_password_2'),
-('chef_mike', 'mike@example.com', 'hashed_password_3');
+INSERT INTO users (username, email, password_hash, role) VALUES
+('john_doe', 'john@example.com', 'hashed_password_1', 'user'),
+('jane_smith', 'jane@example.com', 'hashed_password_2', 'user'),
+('chef_mike', 'mike@example.com', 'hashed_password_3', 'admin');
 
 -- Insert Sample Categories
 INSERT INTO categories (category_name) VALUES
@@ -52,13 +52,13 @@ INSERT INTO ratings (recipe_id, user_id, rating, review) VALUES
 (3, 3, 5, 'Perfect cocktail for a summer evening.');
 
 -- Insert Sample Favorites
-INSERT INTO favorites (user_id, recipe_id) VALUES
-(1, 2), -- User 1 favorites Grilled Cheese Sandwich
-(2, 3), -- User 2 favorites Spaghetti Bolognese
-(3, 1); -- User 3 favorites Pancakes
+INSERT INTO favorites (user_id, recipe_id, created_at) VALUES
+(1, 2, NOW()), -- User 1 favorites Chocolate Cake
+(2, 3, NOW()), -- User 2 favorites Margarita
+(3, 1, NOW()); -- User 3 favorites Spaghetti Carbonara
 
--- Insert sample activity logs
-INSERT INTO activity_logs (user_id, action, table_name, record_id) VALUES
-(1, 'Created a new recipe', 'recipes', 1),
-(2, 'Updated a recipe', 'recipes', 2),
-(3, 'Deleted a recipe', 'recipes', 3);
+-- Insert Sample Activity Logs
+INSERT INTO activity_logs (user_id, action, table_name, record_id, timestamp) VALUES
+(1, 'Created a new recipe', 'recipes', 1, NOW()),
+(2, 'Updated a recipe', 'recipes', 2, NOW()),
+(3, 'Deleted a recipe', 'recipes', 3, NOW());
